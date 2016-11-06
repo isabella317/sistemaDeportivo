@@ -16,19 +16,31 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @var string
 	 */
 	protected $table = 'users';
+	protected $primaryKey = 'IDUsuario';
 
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'email', 'password'];
+	protected $fillable = ['IDUsuario','Nombres', 'Apellidos', 'email','password','Estado'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['password', 'remember_token'];
+	protected $hidden = [ 'remember_token', 'IDRol_id','intentos'];
+
+	public function getPassword()
+    {
+        return $this->Password; // case sensitive
+    }
+
+    public function scopesearch($query,$IDUsuario)
+    {
+    	return $query->where('IDUsuario','LIKE','%'.$IDUsuario.'%');
+    }
+
 
 }

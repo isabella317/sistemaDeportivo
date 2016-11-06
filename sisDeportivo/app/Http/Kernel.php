@@ -27,6 +27,12 @@ class Kernel extends HttpKernel {
 		'auth' => 'sistemaDeportivo\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'sistemaDeportivo\Http\Middleware\RedirectIfAuthenticated',
+		
+		'Administrador' =>'sistemaDeportivo\Http\Middleware\Administrador',
+		'Invitado' => 'sistemaDeportivo\Http\Middleware\Invitado'
+
+
+
 	];
 
 }

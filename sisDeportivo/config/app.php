@@ -113,6 +113,7 @@ return [
 		/*
 		 * Laravel Framework Service Providers...
 		 */
+		'Maatwebsite\Excel\ExcelServiceProvider',
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',
 		'Illuminate\Bus\BusServiceProvider',
@@ -135,6 +136,10 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
+	
+
+
 
 		/*
 		 * Application Service Providers...
@@ -159,7 +164,7 @@ return [
 	*/
 
 	'aliases' => [
-
+		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 		'App'       => 'Illuminate\Support\Facades\App',
 		'Artisan'   => 'Illuminate\Support\Facades\Artisan',
 		'Auth'      => 'Illuminate\Support\Facades\Auth',
@@ -192,6 +197,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Html'		=> 'Illuminate\Html\HtmlFacade',
+		'Form'		=> 'Illuminate\Html\FormFacade',
+
+
 
 	],
 

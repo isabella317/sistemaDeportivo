@@ -20,7 +20,7 @@ class CreateJugadorPorEquiposTable extends Migration {
 			$table->integer('CodigoCampeonato_id')->unsigned();
 			$table->foreign('CodigoCampeonato_id')->references('CodigoCampeonato')->on('campeonatos');
 			$table->string('CodigoJugador_id')->unsigned();
-			$table->foreign('CodigoJugador_id')->references('CodigoJugador')->on('jugadors');	
+			$table->foreign('CodigoJugador_id')->references('CodigoJugador')->on('jugadors');		
 			$table->timestamps();
 		});
 	}

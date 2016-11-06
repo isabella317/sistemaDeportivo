@@ -14,20 +14,19 @@ class CreateJugadorsTable extends Migration {
 	{
 		Schema::create('jugadors', function(Blueprint $table)
 		{
-			$table->primary('CodigoJugador');
-			$table->string('CodigoJugador');
-			$table->string('CodigoCarrera_id')->unsigned();
-			$table->foreign('CodigoCarrera_id')->references('CodigoCarrera')->on('carreras');
-			$table->string('IDUsuario_id')->unsigned();
-			$table->foreign('IDUsuario_id')->references('IDUsuario')->on('users');
-			$table->string('Nombres');
-			$table->string('Apellidos');
-			$table->string('Email')->unique();
-			$table->string('Jornada');
-			$table->integer('Semestre');
-			$table->integer('IDNumero_id')->unsigned();
-			$table->foreign('IDNumero_id')->references('IDNumero')->on('numero_jugadors');
-			$table->boolean('Estado');
+			$table->primary('codigojugador');
+			$table->string('codigojugador');
+			$table->string('codigocarrera_id')->unsigned();
+			$table->foreign('codigocarrera_id')->references('CodigoCarrera')->on('carreras');
+			$table->string('idUsuario_id')->unsigned();
+			$table->foreign('idUsuario_id')->references('IDUsuario')->on('users');
+			$table->string('nombres');
+			$table->string('apellidos');
+			$table->string('email')->unique();
+			$table->string('jornada');
+			$table->integer('idnumero_id')->unsigned();
+			$table->foreign('idnumero_id')->references('IDNumero')->on('numero_jugadors');
+			$table->boolean('estado')->default(true);
 			$table->timestamps();
 		});
 	}

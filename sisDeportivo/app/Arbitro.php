@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Arbitro extends Model {
 
 	protected $table="arbitros";
+		protected $primaryKey = 'IDArbitro';
 
 	/**
 	 * The attributes that are mass assignable.

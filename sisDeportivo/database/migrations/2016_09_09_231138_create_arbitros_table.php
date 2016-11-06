@@ -21,7 +21,7 @@ class CreateArbitrosTable extends Migration {
 			$table->string('Nombres');
 			$table->string('Apellidos');
 			$table->string('Email');
-			$table->boolean('Estado');
+			$table->boolean('Estado')->default(true);
 			$table->timestamps();
 		});
 	}

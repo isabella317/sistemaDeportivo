@@ -14,7 +14,8 @@ class PartidoController extends Controller {
 	 */
 	public function index()
 	{
-		//
+		return view('partido.index');
+
 	}
 
 	/**

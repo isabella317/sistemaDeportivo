@@ -20,6 +20,10 @@ class CreateUsersTable extends Migration {
 			$table->string('Apellidos');
 			$table->string('email')->unique();
 			$table->string('password', 60);
+			$table->integer('IDRol_id')->unsigned()->default(true);
+			$table->foreign('IDRol_id')->references('ID')->on('rols');	
+			$table->boolean('Estado')->default(true);
+			$table->integer('intentos')->unsigned()->default(0);
 			$table->rememberToken();
 			$table->timestamps();
 		});

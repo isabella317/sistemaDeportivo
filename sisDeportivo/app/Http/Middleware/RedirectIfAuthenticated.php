@@ -35,7 +35,22 @@ class RedirectIfAuthenticated {
 	{
 		if ($this->auth->check())
 		{
-			return new RedirectResponse(url('/home'));
+			switch ($this->auth->user()->IDRol) {
+
+				case '1':
+				# Administrador
+				return redirect()->to('Administrador');
+				break;
+
+				case '2':
+				# Invitado
+				return redirect()->to('Invitado');
+				break;
+
+				default:
+				return redirect()->to('login');
+			}
+			return new RedirectResponse(url('/Administrador'));
 		}
 
 		return $next($request);

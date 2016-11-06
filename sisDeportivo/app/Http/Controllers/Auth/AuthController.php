@@ -1,9 +1,14 @@
 <?php namespace sistemaDeportivo\Http\Controllers\Auth;
+use sistemaDeportivo\User;
 
 use sistemaDeportivo\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Session;
 
 class AuthController extends Controller {
 
@@ -35,4 +40,75 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
+	//Login
+
+	protected function getLogin()
+	{
+		return view("login.index");
+	}
+
+
+
+	public function postLogin(Request $request)
+	{
+		$this->validate($request,[
+			'IDUsuario' => 'required',
+			'password' => 'required',
+			]);
+
+		$credentials = $request->only('IDUsuario','password');
+
+		if ($this->auth->attempt($credentials,$request->has('remember')))
+		{
+			return view("index");
+		}
+		return view("login.index")->with('mensaje', 'credenciales de autenticación incorrectas');
+		
+	}
+
+
+	protected function getRegister(){
+
+
+		return view("usuario.registrar");
+	}
+
+
+	protected function postRegister(Request $request)
+	{
+
+		$this->validate($request,[
+			'IDUsuario' =>'required',
+			'Nombres' =>'required',
+			'Apellidos' => 'required',
+			'email' =>'required',
+			'password' => 'required',
+		]);
+
+
+		$data = $request;
+
+		$user = new User;
+		$user->IDUsuario=$data['IDUsuario'];
+		$user->Nombres=$data['Nombres'];
+		$user->Apellidos=$data['Apellidos'];
+		$user->email=$data['email'];
+		$user->password=Hash::make($data['password']);
+		$user->IDRol_id=$data['roles'];
+
+		if($user->save()){
+			return ("se ha registrado correctamente");
+		}
+	}
+
+	protected function getLogout()
+	{
+		$this->auth->logout();
+		Session::flush();
+		return redirect('login.index');
+	}
+
+
+
 }
+

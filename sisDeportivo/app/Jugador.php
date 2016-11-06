@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jugador extends Model {
 
-	protected $table="numero_jugadors";
+	protected $table="jugadors";
 
 
 	/**
@@ -12,14 +12,15 @@ class Jugador extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['id','CodigoCarrera_id','Nombres', 'Apellidos', 'Email','Jornada','Semestre','IDNumero_id'];
+	protected $primaryKey = 'codigojugador';
+	protected $fillable = ['codigojugador','codigocarrera_id','idusuario_id','nombres', 'apellidos', 'email','jornada','idnumero_id','estado'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
 	 *
 	 * @var array
 	 */
-	protected $hidden = ['Estado'];
+	protected $hidden = [];
 
 
 }
